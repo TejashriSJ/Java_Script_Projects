@@ -5,7 +5,7 @@ function deleteFile(pathToFile) {
   return new Promise((resolve, reject) => {
     fs.unlink(pathToFile, (err) => {
       if (err) {
-        console.log(`Error in deleting file \n ${pathToFile} \n`);
+        console.error(`Error in deleting file \n ${pathToFile} \n`);
         reject(err);
       } else {
         resolve();
