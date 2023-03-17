@@ -6,7 +6,7 @@ function readFile(filePath) {
   return new Promise((resolve, reject) => {
     fs.readFile(filePath, "utf8", (err, data) => {
       if (err) {
-        reject(err);
+        reject(`Error in reading \n ${filePath},${err}`);
       } else {
         resolve(data);
       }
@@ -17,7 +17,7 @@ function WriteToFile(data, pathToFile) {
   return new Promise((resolve, reject) => {
     fs.writeFile(pathToFile, data, (err) => {
       if (err) {
-        reject(err);
+        reject(`Error in Writing to file \n ${pathToFile},${err}`);
       } else {
         resolve(pathToFile);
       }
@@ -29,7 +29,7 @@ function appendToFile(pathToFile) {
   return new Promise((resolve, reject) => {
     fs.appendFile("fileNames.txt", pathToFile + "\n", (err) => {
       if (err) {
-        reject(err);
+        reject(`Error in appending to file \n ${pathToFile} \n ${err}`);
       } else {
         resolve();
       }
@@ -40,7 +40,7 @@ function deleteFile(path) {
   return new Promise((resolve, reject) => {
     fs.unlink(path, (err) => {
       if (err) {
-        reject(err);
+        reject(`Error in deleting file \n ${deleteFile} \n ${err}`);
       } else {
         resolve();
       }
