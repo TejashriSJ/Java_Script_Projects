@@ -5,7 +5,7 @@ function deleteFile(pathToFile) {
   return new Promise((resolve, reject) => {
     fs.unlink(pathToFile, (err) => {
       if (err) {
-        reject(err);
+        reject(`Error in deleting file \n ${pathToFile} \n ${err}`);
       } else {
         resolve();
       }
@@ -17,7 +17,7 @@ function createFile(pathToFile) {
   return new Promise((resolve, reject) => {
     fs.writeFile(pathToFile, "", (err) => {
       if (err) {
-        reject(err);
+        reject(`Error in creating file \n ${pathToFile} \n ${err}`);
       } else {
         resolve();
       }
@@ -29,7 +29,7 @@ function readDirectory(dirPath) {
   return new Promise((resolve, reject) => {
     fs.readdir(dirPath, (err, data) => {
       if (err) {
-        reject(err);
+        reject(`Error in reading Directory \n ${dirPath} \n ${err}`);
       } else {
         resolve(data);
       }
@@ -44,8 +44,8 @@ function generateRandomFileAndDelete() {
     //Make directory
     fs.mkdir(dirName, (err) => {
       if (err && err.code !== "EEXIST") {
-        console.error("ERROR in making the directory");
-        reject(err);
+        console.error("");
+        reject(`ERROR in making the directory \n ${dirName} \n ${err}`);
       } else {
         resolve("Directory Created");
       }
